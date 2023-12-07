@@ -12,8 +12,8 @@ public class ProductMapper {
                 .price(request.getPrice())
                 .build();
     }
-    public static Product mapProductResponse(ProductResponse response){
-        return Product.builder()
+    public static ProductResponse mapProductResponse(Product response){
+        return ProductResponse.builder()
                 .id(response.getId())
                 .names(response.getNames())
                 .description(response.getDescription())

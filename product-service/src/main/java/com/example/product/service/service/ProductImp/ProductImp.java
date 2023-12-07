@@ -23,4 +23,12 @@ public class ProductImp implements ProductService {
         Product product = productRepository.save(ProductMapper.mapProductRequestToProduct(request));
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
+
+    @Override
+    public ResponseEntity<ProductResponse> getProductById(Long id){
+Product product = productRepository.findById(String.valueOf(id))
+        .orElseThrow(() -> new RuntimeException("Product not found"));
+return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus.OK);
+
+    }
 }
