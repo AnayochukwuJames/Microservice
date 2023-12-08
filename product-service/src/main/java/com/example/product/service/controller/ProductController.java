@@ -2,6 +2,7 @@ package com.example.product.service.controller;
 
 import com.example.product.service.dto.ProductRequest;
 import com.example.product.service.dto.ProductResponse;
+import com.example.product.service.dto.ProductUpdateResponse;
 import com.example.product.service.model.Product;
 import com.example.product.service.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -20,5 +21,9 @@ public class ProductController {
     @GetMapping("get-product/{}")
     public ResponseEntity<ProductResponse> getProductById(@PathVariable Long id){
         return productService.getProductById(id);
+    }
+    @PutMapping("update-product/{}")
+    public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateResponse response){
+        return productService.updateProduct(id,response);
     }
 }

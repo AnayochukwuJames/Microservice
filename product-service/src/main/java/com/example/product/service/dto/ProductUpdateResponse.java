@@ -7,7 +7,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductUpdateRequest {
+public class ProductUpdateResponse {
     private String names;
     private String description;
     private String price;
