@@ -11,6 +11,7 @@ import lombok.*;
 public class ProductResponse {
     private Long id;
     private String names;
+    private String colour;
     private String description;
     private String price;
 }

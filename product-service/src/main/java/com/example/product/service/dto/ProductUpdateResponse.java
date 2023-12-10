@@ -9,6 +9,7 @@ import lombok.*;
 @Builder
 public class ProductUpdateResponse {
     private String names;
+    private String colour;
     private String description;
     private String price;
 

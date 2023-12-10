@@ -18,7 +18,7 @@ public class ProductImp implements ProductService {
     private final ProductRepository productRepository;
     @Override
     public ResponseEntity<Product> createProduct(ProductRequest request) {
-        if(productRepository.existsByNames(request.getNames())){
+        if(productRepository.existsByNameAndColour(request.getNames())){
             throw new RuntimeException("Product is already exist");
         }
         Product product = productRepository.save(ProductMapper.mapProductRequestToProduct(request));
@@ -37,5 +37,12 @@ return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus
                 new RuntimeException("Product not found"));
        productRepository.save(ProductMapper.mapProductUpdateRequestToProduct(product, response));
         return new ResponseEntity<>(ProductMapper.mapProductResponse(product), HttpStatus.OK);
+    }
+
+    @Override
+    public ResponseEntity<ProductResponse> getProductByName(String name){
+        Product product = (Product) productRepository.findByName(name)
+                .orElseThrow(() -> new RuntimeException("Product with this name is not exist"));
+        return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus.OK);
     }
 }

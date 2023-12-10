@@ -13,4 +13,6 @@ public interface  ProductService {
     ResponseEntity<ProductResponse> getProductById(Long id);
 
     ResponseEntity<ProductResponse> updateProduct(Long id, ProductUpdateResponse response);
+
+    ResponseEntity<ProductResponse> getProductByName(String name);
 }
