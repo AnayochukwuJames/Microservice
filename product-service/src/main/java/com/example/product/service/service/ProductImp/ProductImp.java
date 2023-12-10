@@ -41,7 +41,7 @@ return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus
 
     @Override
     public ResponseEntity<ProductResponse> getProductByName(String name){
-        Product product = (Product) productRepository.findByName(name)
+        Product product = productRepository.findByName(name)
                 .orElseThrow(() -> new RuntimeException("Product with this name is not exist"));
         return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus.OK);
     }
