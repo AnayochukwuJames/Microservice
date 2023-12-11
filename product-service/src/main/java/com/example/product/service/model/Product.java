@@ -13,8 +13,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Product {
     @Id
     private Long id;
-    private String names;
-    private String colour;
+    private String name;
     private String description;
     private String price;
 }

@@ -18,7 +18,7 @@ public class ProductImp implements ProductService {
     private final ProductRepository productRepository;
     @Override
     public ResponseEntity<Product> createProduct(ProductRequest request) {
-        if(productRepository.existsByNameAndColour(request.getNames())){
+        if(productRepository.existsByName(request.getNames())){
             throw new RuntimeException("Product is already exist");
         }
         Product product = productRepository.save(ProductMapper.mapProductRequestToProduct(request));

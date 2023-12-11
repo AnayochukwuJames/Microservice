@@ -8,8 +8,7 @@ import com.example.product.service.model.Product;
 public class ProductMapper {
     public static Product mapProductRequestToProduct(ProductRequest request){
         return Product.builder()
-                .names(request.getNames())
-                .colour(request.getColour())
+                .name(request.getNames())
                 .description(request.getDescription())
                 .price(request.getPrice())
                 .build();
@@ -17,15 +16,13 @@ public class ProductMapper {
     public static ProductResponse mapProductResponse(Product response){
         return ProductResponse.builder()
                 .id(response.getId())
-                .names(response.getNames())
-                .colour(response.getColour())
+                .names(response.getName())
                 .description(response.getDescription())
                 .price(response.getPrice())
                 .build();
     }
     public static Product mapProductUpdateRequestToProduct(Product product, ProductUpdateResponse response){
-       product.setNames(response.getNames());
-       product.setColour(product.getColour());
+       product.setName(response.getNames());
        product.setPrice(response.getPrice());
        product.setDescription(response.getDescription());
         return product;
