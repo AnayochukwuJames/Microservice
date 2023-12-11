@@ -12,6 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class ProductImp implements ProductService {
@@ -44,5 +47,16 @@ return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus
         Product product = productRepository.findByName(name)
                 .orElseThrow(() -> new RuntimeException("Product with this name is not exist"));
         return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus.OK);
+    }
+    @Override
+    public ResponseEntity<String> deleteProduct(Long id){
+        productRepository.deleteById(String.valueOf(id));
+        return new  ResponseEntity<>("product deleted Successfully", HttpStatus.OK);
+    }
+    @Override
+    public ResponseEntity<List<ProductResponse>> findAllProduct(){
+        List<ProductResponse> product = productRepository.findAll().stream().map(ProductMapper::mapProductResponse)
+                .collect(Collectors.toList());
+        return new  ResponseEntity<> (product, HttpStatus.OK);
     }
 }

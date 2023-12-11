@@ -9,6 +9,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("api/v1/product")
@@ -29,5 +31,13 @@ public class ProductController {
     @PutMapping("update-product/{}")
     public ResponseEntity<ProductResponse> updateProduct(@PathVariable Long id, @RequestBody ProductUpdateResponse response){
         return productService.updateProduct(id,response);
+    }
+    @DeleteMapping("delete-product")
+    public ResponseEntity<String> deleteProduct(@PathVariable Long id){
+        return productService.deleteProduct(id);
+    }
+    @GetMapping("get-all-product")
+    public ResponseEntity<List<ProductResponse>> findAllProduct(){
+        return productService.findAllProduct();
     }
 }
