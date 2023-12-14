@@ -17,7 +17,8 @@ import lombok.Setter;
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long orderItemId;
-    private Long productId;
+    private Long id;
+    private String skuCode;
+    private Double price;
     private int quantity;
 }

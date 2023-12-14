@@ -5,21 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderRequest {
-    private Long customerId;
-    private Set<OrderItem> orderItems;
-    private double totalAmount;
-    private String orderStatus;
-    private Date orderDate;
-    private Long orderItemId;
-    private Long productId;
-    private int quantity;
+    private Long id;
+    private String orderNumber;
+    private List<OrderItem> orderItems;
 }
