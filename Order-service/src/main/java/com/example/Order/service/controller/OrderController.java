@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class OrderController {
     public final OrderService orderService;
     @PostMapping("place-order")
-    public String placeOrder(@RequestBody OrderRequest orderRequest){
+    public String placeOrder(@RequestBody OrderRequest request){
         return "Order placed successfully";
     }
 }
