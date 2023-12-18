@@ -7,9 +7,11 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+public class OrderItemRequest {
 
-public class OrderItemDto {
     private String skuCode;
+
     private Double price;
+
     private int quantity;
 }
