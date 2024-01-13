@@ -20,11 +20,11 @@ import java.util.stream.Collectors;
 public class ProductImp implements ProductService {
     private final ProductRepository productRepository;
     @Override
-    public ResponseEntity<Product> createProduct(ProductRequest request) {
-        if(productRepository.existsByName(request.getNames())){
+    public ResponseEntity<Product> createProduct(ProductRequest productRequest) {
+        if(productRepository.existsByName(productRequest.getNames())){
             throw new RuntimeException("Product is already exist");
         }
-        Product product = productRepository.save(ProductMapper.mapProductRequestToProduct(request));
+        Product product = productRepository.save(ProductMapper.mapProductRequestToProduct(productRequest));
         return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
     @Override
@@ -35,10 +35,10 @@ return new ResponseEntity<>(ProductMapper.mapProductResponse(product),HttpStatus
     }
 
     @Override
-    public ResponseEntity<ProductResponse> updateProduct(Long id, ProductUpdateResponse response){
+    public ResponseEntity<ProductResponse> updateProduct(Long id, ProductUpdateResponse productUpdateResponse){
         Product product = productRepository.findById(String.valueOf(id)).orElseThrow(()->
                 new RuntimeException("Product not found"));
-       productRepository.save(ProductMapper.mapProductUpdateRequestToProduct(product, response));
+       productRepository.save(ProductMapper.mapProductUpdateRequestToProduct(product, productUpdateResponse));
         return new ResponseEntity<>(ProductMapper.mapProductResponse(product), HttpStatus.OK);
     }
 
