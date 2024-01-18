@@ -18,12 +18,10 @@ public class OrderController {
 
     public final OrderService orderService;
 
-
     @PostMapping("place-order")
     public String placeOrder(@RequestBody OrderRequest orderRequest){
         return "Order placed successfully";
     }
-
     @PostMapping("create")
     public ResponseEntity<Boolean> createOrder(@RequestBody OrderItemRequest orderItemRequest){
         return orderService.createOrder(orderItemRequest);

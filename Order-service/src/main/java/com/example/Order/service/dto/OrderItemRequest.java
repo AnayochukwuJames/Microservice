@@ -8,10 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class OrderItemRequest {
-
     private String skuCode;
-
     private Double price;
-
     private int quantity;
 }
