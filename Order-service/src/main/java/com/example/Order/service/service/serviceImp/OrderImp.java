@@ -1,4 +1,4 @@
-package com.example.Order.service.serviceImp;
+package com.example.Order.service.service.serviceImp;
 
 import com.example.Order.service.dto.OrderItemRequest;
 import com.example.Order.service.model.OrderItem;
